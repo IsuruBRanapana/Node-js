@@ -1,4 +1,4 @@
-var logger=require('./logger');
+const logger=require('./logger');
 console,console.log(logger);
 
 logger.logOutput('ABCDE');
