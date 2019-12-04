@@ -1,7 +1,9 @@
+const Joi=require('joi');
 const express=require('express');
 const app=express();
 
 app.use(express.json());
+
 
 const c=[
     {id:1, name:'course1'},
@@ -35,6 +37,11 @@ app.get('/api/post/:year/:month/:day',(req,res)=>{
 });
 
 app.post('/api/po',(req,res)=>{
+    const schema ={
+        name: Joi.string().min(3).required()
+    }
+    const result=Joi.validate(req.body,schema);
+    console.log(result);
     const co={
         id:c.length+1,
         name:req.body.name
